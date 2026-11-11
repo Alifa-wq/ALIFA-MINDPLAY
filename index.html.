@@ -1,254 +1,614 @@
 
-<!doctype html>
+<!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#10172b">
-<title>ALIFA — Game Latihan Berpikir</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ALIFA MINDPLAY | Play Think Grow</title>
+
 <style>
-:root{--bg:#0b1020;--panel:#151d34;--panel2:#1c2742;--ink:#f3f6ff;--muted:#aab6d2;--a:#a78bfa;--b:#55d6be;--gold:#ffd166;--line:#2b3858}
-*{box-sizing:border-box}
-body{margin:0;background:radial-gradient(ellipse at 15% 0%,#24234d 0,transparent 40%),radial-gradient(ellipse at 90% 10%,#123c4b 0,transparent 35%),var(--bg);font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;color:var(--ink);min-height:100vh}
-.wrap{max-width:1100px;margin:auto;padding:22px}
-header{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}
-.brand{display:flex;gap:12px;align-items:center}
-.logo{width:52px;height:52px;border-radius:17px;background:linear-gradient(135deg,var(--a),var(--b));display:grid;place-items:center;color:#10172b;font-size:25px;font-weight:900;box-shadow:0 8px 30px #7c3aed55}
-.brand h1{font-size:20px;letter-spacing:2px;margin:0}
-.brand small{color:var(--muted);letter-spacing:1px}
-.chip{border:1px solid var(--line);background:#111a30;padding:9px 14px;border-radius:30px;color:var(--muted);font-size:13px}
-.hero{padding:34px 0 24px;display:grid;grid-template-columns:1.3fr .7fr;gap:20px;align-items:center}
-.hero h2{font-size:clamp(30px,5vw,52px);line-height:1.07;margin:8px 0 12px;letter-spacing:-1.5px}
-.hero h2 span{background:linear-gradient(90deg,var(--a),var(--b));-webkit-background-clip:text;background-clip:text;color:transparent}
-.hero p{color:var(--muted);line-height:1.7;max-width:650px}
-.hero-art{border:1px solid #364365;border-radius:28px;min-height:210px;background:linear-gradient(145deg,#24264b,#143947);display:grid;place-items:center;font-size:75px;position:relative;overflow:hidden}
-.hero-art:after{content:"";position:absolute;width:210px;height:210px;border:1px solid #ffffff18;border-radius:50%;right:-35px;bottom:-90px}
-.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:8px 0 22px}
-.stat,.panel{background:linear-gradient(160deg,#18223a,#121a2d);border:1px solid var(--line);border-radius:20px;padding:18px}
-.stat strong{display:block;font-size:25px;color:var(--b)}
-.stat span{font-size:12px;color:var(--muted)}
-.layout{display:grid;grid-template-columns:300px 1fr;gap:18px}
-.panel h3{margin:0 0 14px;font-size:16px}
-.categories{display:grid;gap:8px}
-.cat{width:100%;border:1px solid var(--line);background:#111a2e;color:var(--ink);padding:12px;border-radius:13px;text-align:left;cursor:pointer;display:flex;align-items:center;gap:10px}
-.cat.active{border-color:var(--a);background:#2a2450}
-.cat .ico{font-size:20px}
-.cat small{display:block;color:var(--muted);font-size:11px;margin-top:2px}
-.btn{border:0;border-radius:13px;padding:12px 16px;font-weight:750;cursor:pointer;background:linear-gradient(90deg,var(--a),var(--b));color:#0b1020}
-.btn.secondary{background:#24314e;color:var(--ink);border:1px solid var(--line)}
-.btn.gold{background:var(--gold);color:#211a06}
-.btn:disabled{opacity:.45;cursor:not-allowed}
-.actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:16px}
-.game{min-height:420px}
-.game-top{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
-.tag{font-size:12px;color:var(--b);background:#153b3a;border-radius:30px;padding:7px 11px}
-.progress{height:6px;background:#29344f;border-radius:8px;margin:18px 0;overflow:hidden}
-.progress div{height:100%;background:linear-gradient(90deg,var(--a),var(--b));width:0;transition:width .3s}
-.qnum{color:var(--muted);font-size:12px}
-.question{font-size:clamp(20px,3vw,27px);font-weight:750;line-height:1.4;margin:18px 0}
-.visual{border:1px dashed #536285;background:#10182b;border-radius:16px;padding:18px;margin:14px 0;color:#dce5ff;white-space:pre-wrap;font-family:ui-monospace,monospace;line-height:1.5}
-.answer{width:100%;min-height:115px;resize:vertical;background:#0d1426;color:var(--ink);border:1px solid #344362;border-radius:14px;padding:14px;font:inherit;outline:none}
-.answer:focus{border-color:var(--a)}
-.hint{display:none;margin-top:12px;padding:14px;border-radius:13px;background:#302a1c;border:1px solid #66542a;color:#ffe5a0;line-height:1.5}
-.hint.show{display:block}
-.notice{color:var(--muted);font-size:12px;line-height:1.5;margin-top:12px}
-.result{margin-top:14px;padding:14px;border:1px solid #355d55;background:#132b2b;border-radius:14px;display:none;line-height:1.6}
-.result.show{display:block}
-.bottom{margin:22px 0;text-align:center;color:#7f8baa;font-size:12px}
-@media(max-width:760px){.hero{grid-template-columns:1fr}.hero-art{min-height:130px;font-size:55px}.layout{grid-template-columns:1fr}.stats{gap:8px}.stat{padding:13px}.wrap{padding:14px}}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #f5f3ff;
+  color: #30294a;
+}
+
+header {
+  background: linear-gradient(120deg, #6546a8, #8066c9);
+  color: white;
+  padding: 22px 18px;
+  text-align: center;
+}
+
+.logo {
+  width: 55px;
+  height: 55px;
+  background: white;
+  color: #7654bd;
+  border-radius: 18px;
+  display: grid;
+  place-items: center;
+  font-size: 30px;
+  font-weight: bold;
+  margin: auto auto 10px;
+}
+
+header h1 {
+  font-size: 25px;
+  letter-spacing: 1px;
+}
+
+header p {
+  font-size: 13px;
+  margin-top: 7px;
+  color: #eee8ff;
+}
+
+main {
+  max-width: 650px;
+  margin: auto;
+  padding: 22px 17px 40px;
+}
+
+.hero {
+  background: white;
+  padding: 28px 20px;
+  border-radius: 22px;
+  text-align: center;
+  box-shadow: 0 5px 20px #30294a12;
+  margin-bottom: 25px;
+}
+
+.hero h2 {
+  color: #6749a9;
+  font-size: 24px;
+  margin-bottom: 12px;
+}
+
+.hero p {
+  color: #77718a;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+button {
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+  border-radius: 12px;
+  padding: 13px 20px;
+  transition: 0.2s;
+}
+
+button:active {
+  transform: scale(0.97);
+}
+
+.primary {
+  background: #7555bb;
+  color: white;
+  margin-top: 18px;
+}
+
+.primary:hover {
+  background: #5c409b;
+}
+
+.section-title {
+  font-size: 19px;
+  margin-bottom: 15px;
+  color: #48366f;
+}
+
+.games {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 13px;
+}
+
+.game-card {
+  background: white;
+  border-radius: 18px;
+  padding: 20px 14px;
+  text-align: center;
+  border: 1px solid #eee9fa;
+  box-shadow: 0 4px 13px #30294a0b;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.game-card:hover {
+  transform: translateY(-4px);
+}
+
+.game-icon {
+  font-size: 34px;
+  margin-bottom: 10px;
+}
+
+.game-card h3 {
+  font-size: 15px;
+  color: #60469c;
+  margin-bottom: 7px;
+}
+
+.game-card p {
+  color: #898398;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+#game-screen {
+  display: none;
+}
+
+.game-box {
+  background: white;
+  border-radius: 20px;
+  padding: 23px 18px;
+  box-shadow: 0 5px 20px #30294a12;
+  text-align: center;
+}
+
+.game-box h2 {
+  color: #694ba9;
+  margin-bottom: 12px;
+}
+
+.info {
+  display: flex;
+  justify-content: space-between;
+  background: #f3effc;
+  padding: 12px;
+  border-radius: 12px;
+  font-size: 13px;
+  margin: 18px 0;
+}
+
+.question {
+  font-size: 19px;
+  font-weight: bold;
+  line-height: 1.6;
+  margin: 22px 0;
+}
+
+.answers {
+  display: grid;
+  gap: 10px;
+}
+
+.answer {
+  background: #f1edfa;
+  color: #51416f;
+  border: 1px solid #e4dcf5;
+  width: 100%;
+}
+
+.answer:hover {
+  background: #e3d9f8;
+}
+
+.answer:disabled {
+  cursor: default;
+  opacity: 1;
+}
+
+.feedback {
+  min-height: 25px;
+  font-size: 14px;
+  font-weight: bold;
+  margin-top: 17px;
+}
+
+.back {
+  background: #e9e2f7;
+  color: #60469c;
+  margin-top: 17px;
+}
+
+.result {
+  background: #f3effc;
+  border-radius: 15px;
+  padding: 20px;
+  margin-top: 18px;
+}
+
+.result h3 {
+  color: #6848a8;
+  margin-bottom: 10px;
+}
+
+footer {
+  text-align: center;
+  color: #9991a9;
+  font-size: 12px;
+  padding: 20px;
+}
+
+.hidden {
+  display: none !important;
+}
+
+@media (max-width: 360px) {
+  .games {
+    grid-template-columns: 1fr;
+  }
+}
 </style>
 </head>
+
 <body>
-<div class="wrap">
+
 <header>
-<div class="brand">
-<div class="logo">A</div>
-<div><h1>ALIFA</h1><small>GAME LATIHAN BERPIKIR</small></div>
-</div>
-<div class="chip">✦ Belajar • Tantang • Tumbuh</div>
+  <div class="logo">A</div>
+  <h1>ALIFA MINDPLAY</h1>
+  <p>PLAY • THINK • GROW</p>
 </header>
 
-<section class="hero">
-<div>
-<div class="tag">YOUR BRAIN'S PLAYGROUND</div>
-<h2>Asah pikiran.<br><span>Naik level.</span></h2>
-<p>Petualangan belajar campuran dari pengetahuan SD, SMP, SMK sampai kuliah. Jelaskan dengan bahasamu sendiri, pecahkan kasus, dan latih logika satu tantangan setiap kali.</p>
-</div>
-<div class="hero-art" aria-label="Ilustrasi buku dan ide">🧠📚✨</div>
-</section>
+<main>
 
-<div class="stats">
-<div class="stat"><strong id="played">0</strong><span>TANTANGAN DICOBA</span></div>
-<div class="stat"><strong id="saved">0</strong><span>JAWABAN DISIMPAN</span></div>
-<div class="stat"><strong id="level">Pemula</strong><span>LEVEL LATIHAN</span></div>
-</div>
+  <!-- HALAMAN DEPAN -->
+  <section id="home-screen">
 
-<div class="layout">
-<aside class="panel">
-<h3>🎯 Pilih dunia belajar</h3>
-<div class="categories" id="categories"></div>
-<div class="actions">
-<button class="btn" id="random">🎲 Topik random</button>
-<button class="btn secondary" id="reset">↻ Reset sesi</button>
-</div>
-<p class="notice">Petunjuk hanya muncul saat kamu menekan tombolnya. Penilaian tidak otomatis—gunakan tombol “UDAH, NILAI!” saat kamu memang siap.</p>
-</aside>
+    <div class="hero">
+      <h2>Welcome to MindPlay! ✨</h2>
+      <p>
+        Tempat bermain, berpikir, dan mengasah kemampuan.
+        Tantang dirimu melalui permainan sederhana
+        yang menyenangkan!
+      </p>
+      <button class="primary" onclick="showGames()">
+        Mulai Bermain →
+      </button>
+    </div>
 
-<main class="panel game">
-<div class="game-top">
-<span class="tag" id="topic">TOPIK • RANDOM</span>
-<span class="qnum" id="qnum">Tantangan 1</span>
-</div>
-<div class="progress"><div id="bar"></div></div>
-<div class="question" id="question"></div>
-<div class="visual" id="visual"></div>
-<textarea class="answer" id="answer" placeholder="Tulis jawaban atau penjelasanmu di sini..."></textarea>
-<div class="actions">
-<button class="btn secondary" id="hintBtn">💡 Petunjuk</button>
-<button class="btn secondary" id="saveBtn">📌 Simpan jawaban</button>
-<button class="btn" id="nextBtn">Tantangan berikutnya →</button>
-<button class="btn gold" id="gradeBtn">UDAH, NILAI!</button>
-</div>
-<div class="hint" id="hint"></div>
-<div class="result" id="result"></div>
-<p class="notice">Mode latihan: simpan jawabanmu dulu. Kamu bebas mengerjakan dengan kalimat sendiri. Evaluasi menggunakan rubrik ketat hanya setelah kamu menekan “UDAH, NILAI!”.</p>
+    <h2 class="section-title">🎮 Pilih Permainanmu</h2>
+
+    <div class="games">
+
+      <div class="game-card" onclick="startGame('logic')">
+        <div class="game-icon">🧩</div>
+        <h3>Tebak Pola</h3>
+        <p>Uji kemampuan logika dan mengenali pola.</p>
+      </div>
+
+      <div class="game-card" onclick="startGame('math')">
+        <div class="game-icon">🔢</div>
+        <h3>Hitung Cepat</h3>
+        <p>Latih ketelitian dan kemampuan berhitung.</p>
+      </div>
+
+      <div class="game-card" onclick="startGame('knowledge')">
+        <div class="game-icon">💡</div>
+        <h3>Asah Wawasan</h3>
+        <p>Jawab pertanyaan dan tambah pengetahuan.</p>
+      </div>
+
+      <div class="game-card" onclick="startGame('memory')">
+        <div class="game-icon">🧠</div>
+        <h3>Asah Ingatan</h3>
+        <p>Uji kemampuan mengingat urutan angka.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- HALAMAN PERMAINAN -->
+  <section id="game-screen">
+
+    <div class="game-box">
+      <h2 id="game-title">Permainan</h2>
+
+      <div class="info">
+        <span id="progress">Soal 1</span>
+        <span>⭐ Skor: <b id="score">0</b></span>
+      </div>
+
+      <div id="play-area">
+        <div class="question" id="question"></div>
+        <div class="answers" id="answers"></div>
+        <div class="feedback" id="feedback"></div>
+      </div>
+
+      <div id="result-area" class="hidden">
+        <div class="result">
+          <h3>🎉 Permainan Selesai!</h3>
+          <p id="final-score"></p>
+          <p id="final-message" style="margin-top:10px"></p>
+        </div>
+
+        <button class="primary" onclick="restartGame()">
+          Main Lagi ↻
+        </button>
+      </div>
+
+      <button class="back" onclick="backToMenu()">
+        ← Kembali ke Menu
+      </button>
+    </div>
+
+  </section>
+
 </main>
-</div>
 
-<div class="bottom">ALIFA • Learning is a journey, not a race. ✦</div>
-</div>
+<footer>
+  © 2026 ALIFA MINDPLAY · Play • Think • Grow
+</footer>
 
 <script>
-const packs=[
-{name:"Pengetahuan umum",icon:"🌍",desc:"SD–SMP • fakta & pemahaman",items:[
-{q:"Mengapa kita mengalami siang dan malam di Bumi?",v:"☀️ Matahari →→→ 🌍\n        ↻ (Bumi berputar)",h:"Perhatikan gerakan Bumi pada porosnya. Bukan Matahari yang mengelilingi Bumi setiap hari.",key:["rotasi","berputar","poros","matahari"]},
-{q:"Sebutkan dua perbedaan antara cuaca dan iklim.",v:"Cuaca: kondisi atmosfer dalam waktu singkat\nIklim: pola kondisi dalam jangka panjang",h:"Bandingkan rentang waktu dan luas wilayah pengamatan.",key:["jangka","waktu","singkat","panjang"]},
-{q:"Mengapa menjaga keberagaman budaya Indonesia penting?",v:"🧩 Banyak budaya → identitas bangsa",h:"Pikirkan identitas, saling menghargai, dan kekayaan tradisi.",key:["identitas","menghargai","budaya"]}
-]},
-{name:"Sejarah & geografi",icon:"🏛️",desc:"Timeline, wilayah & peradaban",items:[
-{q:"Proklamasi Indonesia dibacakan pada tanggal berapa, dan apa makna utamanya?",v:"TIMELINE\n17 Agustus 1945 → Proklamasi Kemerdekaan",h:"Tanggalnya berada di bulan Agustus 1945. Makna utamanya berkaitan dengan pernyataan merdeka.",key:["17 agustus 1945","kemerdekaan"]},
-{q:"Mengapa peradaban Khmer berkembang dekat Danau Tonlé Sap?",v:"🌊 Danau Tonlé Sap\n       ↓\nPertanian • air • pangan • transportasi",h:"Hubungkan danau dengan sumber air, perikanan, dan pertanian.",key:["air","pertanian","ikan","pangan"]},
-{q:"Apa pengaruh letak Indonesia di antara dua benua dan dua samudra?",v:"ASIA  🌏  AUSTRALIA\nINDIA 🌊 PASIFIK",h:"Pikirkan jalur perdagangan, iklim, dan pertemuan budaya.",key:["perdagangan","budaya","strategis","iklim"]}
-]},
-{name:"Manajemen & bisnis",icon:"📊",desc:"SMK–Kuliah • kasus nyata",items:[
-{q:"Toko menerima 100 pesanan baju, tetapi pemasok hanya mengirim 60. Apa langkah manajerial yang tepat?",v:"Pesanan: 100\nBarang datang: 60\nKekurangan: ?",h:"Hitung selisihnya, komunikasikan kepada pemasok, lalu beri informasi yang jujur kepada pelanggan dan tawarkan solusi.",key:["40","pemasok","pelanggan","komunikasi","solusi"]},
-{q:"Pengunjung toko online 1.000 orang, yang membeli 80. Ada 20 keluhan ukuran dan 5 keluhan pengiriman terlambat. Masalah apa yang perlu diprioritaskan dan bagaimana?",v:"1.000 pengunjung → 80 pembeli\n20 keluhan ukuran • 5 keterlambatan",h:"Hitung conversion rate. Keluhan ukuran paling banyak; lihat panduan ukuran dan informasi produk, sambil tetap tindak lanjuti keterlambatan.",key:["8%","ukuran","panduan","konversi","pengiriman"]},
-{q:"Kedai minuman menerima keluhan antrean lama saat jam ramai. Berikan strategi operasional dan alasan.",v:"Jam ramai → antrean panjang → pelanggan menunggu",h:"Pikirkan pembagian tugas, persiapan bahan, alur pesanan, dan evaluasi waktu tunggu.",key:["pembagian","persiapan","alur","waktu","pegawai"]},
-{q:"Jelaskan perbedaan beban kerja dan work-life balance dalam konteks karyawan.",v:"Karyawan 👩‍💼 • tugas • waktu kerja • kehidupan pribadi",h:"Beban kerja terkait tuntutan/tugas; work-life balance terkait keseimbangan antara pekerjaan dan kehidupan pribadi.",key:["tugas","tuntutan","keseimbangan","pribadi"]}
-]},
-{name:"Administrasi & hukum",icon:"⚖️",desc:"SMK–Kuliah • dokumen & konsep",items:[
-{q:"Apa fungsi utama notulen dalam sebuah rapat organisasi?",v:"RAPAT → catatan → keputusan & tindak lanjut",h:"Catatan ini membantu peserta mengingat pembahasan, keputusan, dan siapa melakukan apa.",key:["keputusan","pembahasan","tindak lanjut","catatan"]},
-{q:"Mengapa perjanjian kerja perlu memuat hak dan kewajiban para pihak?",v:"Pihak pekerja ↔ pihak pemberi kerja",h:"Pikirkan kejelasan, kepastian, tanggung jawab, dan mengurangi perselisihan.",key:["hak","kewajiban","jelas","perselisihan"]},
-{q:"Dalam administrasi, apa risiko jika dokumen penting tidak diberi nomor dan diarsipkan dengan baik?",v:"Dokumen → ??? → pencarian & pengendalian",h:"Bayangkan dokumen sulit ditemukan, terlacak, atau dibuktikan kembali.",key:["sulit","hilang","pencarian","arsip","bukti"]}
-]},
-{name:"Matematika & logika",icon:"🧮",desc:"Hitungan cepat & nalar",items:[
-{q:"Modal satu produk Rp70.000, harga jual Rp100.000. Jika terjual 30 unit, berapa laba kotor total?",v:"Laba/unit = harga jual − modal\nLaba total = laba/unit × 30",h:"Cari laba per unit dahulu, kemudian kalikan jumlah unit terjual.",key:["90000","90.000","30.000","900000"]},
-{q:"Sebuah barang seharga Rp200.000 mendapat diskon 15%. Berapa harga setelah diskon?",v:"Harga awal: Rp200.000\nDiskon: 15%",h:"Hitung 15% dari 200.000, lalu kurangkan dari harga awal.",key:["170000","170.000"]},
-{q:"Ada 3 gelas: A air dingin, B suhu ruang, C air hangat. Ketiganya dimasukkan ke ruangan ber-es. Gelas mana yang awalnya memiliki selisih suhu terbesar terhadap es? Jelaskan.",v:"A 🧊 • B 🌡️ • C ♨️\nLingkungan: 🧊",h:"Bandingkan suhu awal masing-masing dengan suhu es. Suhu hangat umumnya memiliki selisih lebih besar.",key:["c","hangat","selisih","suhu"]}
-]},
-{name:"Bahasa & komunikasi",icon:"💬",desc:"Literasi, argumentasi & speaking",items:[
-{q:"Buat satu pesan profesional kepada pelanggan untuk meminta maaf karena pesanan terlambat, sekaligus memberi solusi.",v:"Pelanggan menunggu pesanan 📦",h:"Pesan efektif: sapaan, permintaan maaf, penjelasan singkat, solusi konkret, dan penutup sopan.",key:["maaf","pesanan","solusi","terima kasih"]},
-{q:"Apa perbedaan fakta dan opini? Berikan masing-masing satu contoh.",v:"Fakta = dapat diverifikasi\nOpini = pendapat/penilaian",h:"Fakta dapat dicek kebenarannya. Opini menunjukkan pandangan seseorang.",key:["verifikasi","pendapat","opini","contoh"]},
-{q:"Jelaskan bagaimana slogan/tagline dapat membantu sebuah merek dikenal konsumen.",v:"MEREK → pesan ringkas → ingatan audiens",h:"Pikirkan pesan singkat, identitas, konsistensi, dan daya ingat.",key:["pesan","identitas","ingat","konsisten"]}
-]}
-];
 
-let chosen=0,index=0,played=0,saved=0,answers={},graded=false;
-const $=id=>document.getElementById(id);
+const games = {
 
-function drawCats(){
-$("categories").innerHTML=packs.map((p,i)=>`<button class="cat ${i===chosen?'active':''}" data-i="${i}"><span class="ico">${p.icon}</span><span><b>${p.name}</b><small>${p.desc}</small></span></button>`).join("");
-document.querySelectorAll(".cat").forEach(b=>b.onclick=()=>{
-chosen=+b.dataset.i;
-index=0;
-drawCats();
-render()
-})
+  logic: {
+    title: "🧩 Tebak Pola",
+    questions: [
+      {
+        q: "2, 4, 6, 8, ... Angka selanjutnya?",
+        a: ["9", "10", "12", "14"],
+        c: 1
+      },
+      {
+        q: "1, 3, 6, 10, ... Angka selanjutnya?",
+        a: ["12", "13", "15", "16"],
+        c: 2
+      },
+      {
+        q: "5, 10, 15, 20, ... Angka selanjutnya?",
+        a: ["22", "24", "25", "30"],
+        c: 2
+      },
+      {
+        q: "1, 2, 4, 8, ... Angka selanjutnya?",
+        a: ["10", "12", "14", "16"],
+        c: 3
+      },
+      {
+        q: "100, 90, 80, 70, ... Angka selanjutnya?",
+        a: ["50", "55", "60", "65"],
+        c: 2
+      }
+    ]
+  },
+
+  math: {
+    title: "🔢 Hitung Cepat",
+    questions: [
+      {
+        q: "15 + 25 = ?",
+        a: ["30", "35", "40", "45"],
+        c: 2
+      },
+      {
+        q: "9 × 7 = ?",
+        a: ["56", "63", "72", "69"],
+        c: 1
+      },
+      {
+        q: "100 - 45 = ?",
+        a: ["45", "50", "55", "65"],
+        c: 2
+      },
+      {
+        q: "12 × 5 = ?",
+        a: ["50", "55", "60", "65"],
+        c: 2
+      },
+      {
+        q: "144 ÷ 12 = ?",
+        a: ["10", "11", "12", "14"],
+        c: 2
+      }
+    ]
+  },
+
+  knowledge: {
+    title: "💡 Asah Wawasan",
+    questions: [
+      {
+        q: "Planet terbesar dalam tata surya adalah?",
+        a: ["Bumi", "Mars", "Jupiter", "Venus"],
+        c: 2
+      },
+      {
+        q: "Hewan yang dikenal sebagai raja hutan adalah?",
+        a: ["Harimau", "Singa", "Gajah", "Beruang"],
+        c: 1
+      },
+      {
+        q: "Berapa jumlah hari dalam satu minggu?",
+        a: ["5", "6", "7", "8"],
+        c: 2
+      },
+      {
+        q: "Alat untuk mengukur suhu adalah?",
+        a: ["Penggaris", "Termometer", "Kompas", "Jam"],
+        c: 1
+      },
+      {
+        q: "Warna hasil campuran biru dan kuning adalah?",
+        a: ["Ungu", "Hijau", "Merah", "Oranye"],
+        c: 1
+      }
+    ]
+  },
+
+  memory: {
+    title: "🧠 Asah Ingatan",
+    questions: [
+      {
+        q: "Ingat urutan ini: 3 - 7 - 2. Pilih urutan yang benar!",
+        a: ["3 - 2 - 7", "7 - 3 - 2", "3 - 7 - 2", "2 - 7 - 3"],
+        c: 2
+      },
+      {
+        q: "Ingat urutan ini: 5 - 1 - 8. Pilih urutan yang benar!",
+        a: ["5 - 1 - 8", "1 - 5 - 8", "8 - 1 - 5", "5 - 8 - 1"],
+        c: 0
+      },
+      {
+        q: "Ingat urutan ini: 9 - 4 - 6. Pilih urutan yang benar!",
+        a: ["4 - 9 - 6", "9 - 4 - 6", "6 - 4 - 9", "9 - 6 - 4"],
+        c: 1
+      },
+      {
+        q: "Ingat urutan ini: 2 - 8 - 5. Pilih urutan yang benar!",
+        a: ["8 - 2 - 5", "5 - 8 - 2", "2 - 8 - 5", "2 - 5 - 8"],
+        c: 2
+      },
+      {
+        q: "Ingat urutan ini: 7 - 3 - 1. Pilih urutan yang benar!",
+        a: ["7 - 3 - 1", "3 - 7 - 1", "1 - 3 - 7", "7 - 1 - 3"],
+        c: 0
+      }
+    ]
+  }
+
+};
+
+let currentGame = "";
+let currentQuestion = 0;
+let score = 0;
+let answered = false;
+
+function showGames() {
+  document.getElementById("home-screen").style.display = "block";
+  document.getElementById("home-screen").scrollIntoView();
 }
 
-function current(){return packs[chosen].items[index%packs[chosen].items.length]}
+function startGame(type) {
+  currentGame = type;
+  currentQuestion = 0;
+  score = 0;
 
-function render(){
-let p=packs[chosen],q=current();
-$("topic").textContent=p.icon+" "+p.name.toUpperCase();
-$("qnum").textContent="Tantangan "+(index+1);
-$("bar").style.width=((index%p.items.length+1)/p.items.length*100)+"%";
-$("question").textContent=q.q;
-$("visual").textContent=q.v;
-$("answer").value=answers[chosen+"-"+index]||"";
-$("hint").textContent="";
-$("hint").classList.remove("show");
-$("result").classList.remove("show");
-graded=false;
-$("gradeBtn").disabled=false
+  document.getElementById("home-screen").style.display = "none";
+  document.getElementById("game-screen").style.display = "block";
+  document.getElementById("game-title").textContent = games[type].title;
+  document.getElementById("result-area").classList.add("hidden");
+  document.getElementById("play-area").classList.remove("hidden");
+
+  showQuestion();
+  window.scrollTo(0, 0);
 }
 
-$("hintBtn").onclick=()=>{
-$("hint").textContent="💡 Petunjuk: "+current().h;
-$("hint").classList.add("show")
-};
+function showQuestion() {
+  answered = false;
 
-$("saveBtn").onclick=()=>{
-answers[chosen+"-"+index]=$("answer").value.trim();
-if(!answers[chosen+"-"+index]){
-$("result").textContent="Tulis jawaban dulu sebelum disimpan ya.";
-$("result").classList.add("show");
-return
+  const data = games[currentGame].questions[currentQuestion];
+
+  document.getElementById("progress").textContent =
+    "Soal " + (currentQuestion + 1) + " / 5";
+
+  document.getElementById("score").textContent = score;
+
+  document.getElementById("question").textContent = data.q;
+
+  document.getElementById("feedback").textContent = "";
+
+  const answers = document.getElementById("answers");
+  answers.innerHTML = "";
+
+  data.a.forEach((answer, index) => {
+    const button = document.createElement("button");
+
+    button.className = "answer";
+    button.textContent = answer;
+
+    button.onclick = () => checkAnswer(index);
+
+    answers.appendChild(button);
+  });
 }
-saved=Object.keys(answers).filter(k=>answers[k]).length;
-$("saved").textContent=saved;
-$("result").textContent="Jawaban tersimpan di sesi ini. Belum dinilai—kamu yang menentukan kapan siap!";
-$("result").classList.add("show")
-};
 
-$("nextBtn").onclick=()=>{
-answers[chosen+"-"+index]=$("answer").value.trim();
-index++;
-played++;
-$("played").textContent=played;
-$("level").textContent=played<4?"Pemula":played<10?"Penjelajah":"Pemikir";
-render()
-};
+function checkAnswer(index) {
+  if (answered) return;
 
-$("random").onclick=()=>{
-chosen=Math.floor(Math.random()*packs.length);
-index=Math.floor(Math.random()*packs[chosen].items.length);
-drawCats();
-render()
-};
+  answered = true;
 
-$("reset").onclick=()=>{
-if(confirm("Reset jawaban dan statistik sesi ini?")){
-index=0;
-played=0;
-saved=0;
-answers={};
-$("played").textContent=0;
-$("saved").textContent=0;
-$("level").textContent="Pemula";
-render()
+  const data = games[currentGame].questions[currentQuestion];
+  const buttons = document.querySelectorAll(".answer");
+  const feedback = document.getElementById("feedback");
+
+  buttons.forEach((button, i) => {
+    button.disabled = true;
+
+    if (i === data.c) {
+      button.style.background = "#d8f5e5";
+      button.style.borderColor = "#76bd91";
+    }
+
+    if (i === index && index !== data.c) {
+      button.style.background = "#ffe0e0";
+      button.style.borderColor = "#e99a9a";
+    }
+  });
+
+  if (index === data.c) {
+    score += 20;
+    feedback.textContent = "Benar! Hebat sekali! 🎉";
+    feedback.style.color = "#26834d";
+  } else {
+    feedback.textContent = "Belum tepat. Tetap semangat! 💪";
+    feedback.style.color = "#c45a5a";
+  }
+
+  document.getElementById("score").textContent = score;
+
+  const next = document.createElement("button");
+  next.className = "primary";
+  next.textContent = currentQuestion === 4 ? "Lihat Hasil" : "Soal Berikutnya →";
+  next.onclick = nextQuestion;
+
+  document.getElementById("answers").appendChild(next);
 }
-};
 
-$("gradeBtn").onclick=()=>{
-const a=$("answer").value.trim().toLowerCase();
-if(!a){
-$("result").textContent="Isi jawabanmu dulu, lalu tekan UDAH, NILAI!";
-$("result").classList.add("show");
-return
+function nextQuestion() {
+  currentQuestion++;
+
+  if (currentQuestion < 5) {
+    showQuestion();
+  } else {
+    showResult();
+  }
 }
-const keys=current().key;
-let matched=keys.filter(k=>a.includes(k.toLowerCase())).length;
-let pct=Math.round(matched/keys.length*100);
-let msg=pct>=50?"Ada beberapa konsep penting yang sudah kamu sebut.":"Jawaban masih perlu diperdalam.";
-$("result").innerHTML=`<b>Evaluasi awal berbasis kata kunci: ${pct}%</b><br>${msg}<br><small>Ini pemeriksaan otomatis sederhana, bukan penilaian penuh. Periksa apakah penjelasanmu masuk akal, lengkap, dan tepat konsep.</small>`;
-$("result").classList.add("show");
-graded=true;
-$("gradeBtn").disabled=true
-};
 
-drawCats();
-render();
+function showResult() {
+  document.getElementById("play-area").classList.add("hidden");
+  document.getElementById("result-area").classList.remove("hidden");
+
+  document.getElementById("final-score").textContent =
+    "Skor kamu: " + score + " / 100";
+
+  let message = "";
+
+  if (score === 100) {
+    message = "Sempurna! Kamu berhasil menjawab semuanya! 🏆";
+  } else if (score >= 60) {
+    message = "Bagus! Kemampuanmu semakin berkembang! 🌟";
+  } else {
+    message = "Terus berlatih ya! Setiap percobaan adalah kemajuan. 💜";
+  }
+
+  document.getElementById("final-message").textContent = message;
+}
+
+function restartGame() {
+  startGame(currentGame);
+}
+
+function backToMenu() {
+  document.getElementById("game-screen").style.display = "none";
+  document.getElementById("home-screen").style.display = "block";
+  window.scrollTo(0, 0);
+}
+
 </script>
+
 </body>
 </html>
